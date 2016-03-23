@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: de79ec4e0e03bc64a993c6fb693574aa
-timeCreated: 1458659497
+timeCreated: 1458771145
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -57,31 +57,32 @@ TextureImporter:
         serializedVersion: 2
         x: 33
         y: 21
-        width: 179
-        height: 153
+        width: 197
+        height: 155
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 30.5, y: 76.5}
-        - {x: -53.5, y: 76.5}
-        - {x: -89.5, y: 62.5}
-        - {x: -89.5, y: -24.5}
-        - {x: -84.5, y: -53.5}
-        - {x: -59.5, y: -75.5}
-        - {x: 62.5, y: -75.5}
-        - {x: 89.5, y: -67.5}
-        - {x: 89.5, y: 17.5}
-        - {x: 80.5, y: 55.5}
+      - - {x: 57.5, y: 40.5}
+        - {x: 6.5, y: 75.5}
+        - {x: -58.5, y: 75.5}
+        - {x: -98.5, y: 59.5}
+        - {x: -98.5, y: -18.5}
+        - {x: -90.5, y: -52.5}
+        - {x: -74.5, y: -76.5}
+        - {x: 72.5, y: -76.5}
+        - {x: 98.5, y: -63.5}
+        - {x: 98.5, y: -18.5}
+        - {x: 79.5, y: 25.5}
     - name: player-hand_gun_1
       rect:
         serializedVersion: 2
-        x: 212
-        y: 22
+        x: 230
+        y: 23
         width: 20
-        height: 152
+        height: 153
       alignment: 9
-      pivot: {x: 0.53643036, y: 0.21718474}
+      pivot: {x: 0.17475586, y: 0.20214184}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
