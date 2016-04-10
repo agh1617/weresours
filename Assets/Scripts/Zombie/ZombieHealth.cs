@@ -9,15 +9,13 @@ public class ZombieHealth : MonoBehaviour
     Collider collider;
     bool isDead;
 
-
-    void Awake ()
+    void Awake()
     {
-        collider = GetComponent <BoxCollider> (); // TODO change to more suitable collider
-        
+        collider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
         currentHealth = startingHealth;
     }
 
-    void Update ()
+    void Update()
     {
         if (isDead)
         {
@@ -25,21 +23,19 @@ public class ZombieHealth : MonoBehaviour
         }
     }
 
-
-    public void TakeDamage (int amount)
+    public void TakeDamage(int amount)
     {
         if(isDead)
             return;
 
         currentHealth -= amount;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            Death ();
+            Death();
         }
     }
 
-
-    void Death ()
+    void Death()
     {
         GetComponent<NavMeshAgent>().enabled = false;
         isDead = true;

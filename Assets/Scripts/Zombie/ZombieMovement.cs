@@ -16,7 +16,6 @@ public class ZombieMovement : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
     }
 
-
     void Update()
     {
         if (zombieHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
@@ -29,3 +28,4 @@ public class ZombieMovement : MonoBehaviour
         }
     }
 }
+

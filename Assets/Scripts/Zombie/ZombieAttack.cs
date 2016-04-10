@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class ZombieAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;
@@ -9,18 +8,16 @@ public class ZombieAttack : MonoBehaviour
 
     GameObject player;
     PlayerHealth playerHealth;
-    //EnemyHealth enemyHealth;
+    ZombieHealth zombieHealth;
     bool playerInRange;
     float timer;
-
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
-        //enemyHealth = GetComponent<EnemyHealth>();
+        zombieHealth = GetComponent<ZombieHealth>();
     }
-
 
     void OnTriggerEnter(Collider other)
     {
@@ -30,7 +27,6 @@ public class ZombieAttack : MonoBehaviour
         }
     }
 
-
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject == player)
@@ -39,12 +35,11 @@ public class ZombieAttack : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeBetweenAttacks && playerInRange)// && enemyHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && playerInRange && zombieHealth.currentHealth > 0)
         {
             Attack();
             Debug.Log("Attack");
@@ -52,10 +47,9 @@ public class ZombieAttack : MonoBehaviour
 
         if (playerHealth.currentHealth <= 0)
         {
-            // TODO
+            playerInRange = false;
         }
     }
-
 
     void Attack()
     {
