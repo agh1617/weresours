@@ -6,12 +6,15 @@ public class ZombieHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public int scoreValue = 10;
-
+    
+    ZombieBlood zombieBlood;
     Collider collider;
     bool isDead = false;
+    bool isBleeding = false;
 
     void Awake()
     {
+        this.zombieBlood = GetComponent<ZombieBlood>();
         collider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
         currentHealth = startingHealth;
     }
@@ -30,11 +33,26 @@ public class ZombieHealth : MonoBehaviour
             return;
 
         currentHealth -= amount;
+
+        if (currentHealth <= 0.7 * startingHealth)
+        {
+            StartBleeding();
+        }
+
         if (currentHealth <= 0)
         {
             playerState.score += scoreValue;
             Death();
         }
+    }
+
+    void StartBleeding()
+    {
+        if (isBleeding) return;
+
+        zombieBlood.Bleed();
+
+        this.isBleeding = true;
     }
 
     void Death()
