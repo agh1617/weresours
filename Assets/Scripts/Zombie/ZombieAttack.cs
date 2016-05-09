@@ -6,7 +6,6 @@ public class ZombieAttack : MonoBehaviour
     public float timeBetweenAttacks = 0.5f;
     public int attackDamage = 10;
 
-    GameObject player;
     PlayerHealth playerHealth;
     ZombieHealth zombieHealth;
     bool playerInRange;
@@ -14,23 +13,23 @@ public class ZombieAttack : MonoBehaviour
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
         zombieHealth = GetComponent<ZombieHealth>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.tag == "Player")
         {
+            playerHealth = other.GetComponent<PlayerHealth>();
             playerInRange = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.tag == "Player")
         {
+            playerHealth = null;
             playerInRange = false;
         }
     }
@@ -42,12 +41,11 @@ public class ZombieAttack : MonoBehaviour
         if (timer >= timeBetweenAttacks && playerInRange && zombieHealth.currentHealth > 0)
         {
             Attack();
-            Debug.Log("Attack");
-        }
 
-        if (playerHealth.currentHealth <= 0)
-        {
-            playerInRange = false;
+            if (playerHealth.currentHealth <= 0)
+            {
+                playerInRange = false;
+            }
         }
     }
 
