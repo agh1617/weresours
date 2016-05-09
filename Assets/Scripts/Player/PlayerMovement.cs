@@ -3,22 +3,21 @@
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
+    public int playerNumber = 1;
 
     Vector3 movement;
     Rigidbody playerRigidbody;
-    int floorMask;
-    float camRayLength = 100f;
+    float rotation = 0f;
 
     void Awake()
     {
-        floorMask = LayerMask.GetMask("Floor");
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal_" + playerNumber);
+        float v = Input.GetAxisRaw("Vertical_" + playerNumber);
 
         Move(h, v);
         Turning();
@@ -33,17 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Turning()
     {
-        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        RaycastHit floorHit;
-
-        if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-        {
-            Vector3 playerToMouse = floorHit.point - transform.position;
-            playerToMouse.y = 0f;
-
-            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-            playerRigidbody.MoveRotation(newRotation);
-        }
+        rotation += Input.GetAxis("Rotate_" + playerNumber) * speed;
+        Quaternion newRotation = Quaternion.Euler(0f, rotation, 0f);
+        playerRigidbody.MoveRotation(newRotation);
     }
 }
