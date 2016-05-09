@@ -5,9 +5,10 @@ public class ZombieHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
+    public int scoreValue = 10;
 
     Collider collider;
-    bool isDead;
+    bool isDead = false;
 
     void Awake()
     {
@@ -23,7 +24,7 @@ public class ZombieHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(PlayerState playerState, int amount)
     {
         if(isDead)
             return;
@@ -31,6 +32,7 @@ public class ZombieHealth : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
+            playerState.score += scoreValue;
             Death();
         }
     }

@@ -8,7 +8,7 @@ public class PlayerShooting : MonoBehaviour
     public float range = 100f;
 
     int playerId;
-    Transform player;
+    PlayerState playerState;
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
@@ -18,8 +18,8 @@ public class PlayerShooting : MonoBehaviour
     
     void Awake()
     {
-        player = transform.parent.parent;
-        playerId = player.gameObject.GetComponent<PlayerState>().playerId;
+        playerState = transform.parent.parent.gameObject.GetComponent<PlayerState>();
+        playerId = playerState.playerId;
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
     }
@@ -59,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
             ZombieHealth zombieHealth = shootHit.collider.GetComponent<ZombieHealth>();
             if (zombieHealth != null)
             {
-                zombieHealth.TakeDamage(damagePerShot);
+                zombieHealth.TakeDamage(playerState, damagePerShot);
             }
             gunLine.SetPosition(1, shootHit.point);
         }
