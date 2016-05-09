@@ -6,17 +6,20 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
-    public int playerNumber = 1;
 
+    int playerId;
+    Transform player;
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
     int shootableMask;
     LineRenderer gunLine;
     float effectsDisplayTime = 0.2f;
-
+    
     void Awake()
     {
+        player = transform.parent.parent;
+        playerId = player.gameObject.GetComponent<PlayerState>().playerId;
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
     }
@@ -25,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-		if (Input.GetButton("Fire_" + playerNumber) && timer >= timeBetweenBullets && Time.timeScale != 0)
+		if (Input.GetButton("Fire_" + playerId) && timer >= timeBetweenBullets && Time.timeScale != 0)
         {
             Shoot();
         }

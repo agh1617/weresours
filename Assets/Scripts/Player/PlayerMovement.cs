@@ -3,21 +3,22 @@
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
-    public int playerNumber = 1;
 
+    int playerId;
     Vector3 movement;
     Rigidbody playerRigidbody;
     float rotation = 0f;
 
     void Awake()
     {
+        playerId = GetComponent<PlayerState>().playerId;
         playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal_" + playerNumber);
-        float v = Input.GetAxisRaw("Vertical_" + playerNumber);
+        float h = Input.GetAxisRaw("Horizontal_" + playerId);
+        float v = Input.GetAxisRaw("Vertical_" + playerId);
 
         Move(h, v);
         Turning();
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Turning()
     {
-        rotation += Input.GetAxis("Rotate_" + playerNumber) * speed;
+        rotation += Input.GetAxis("Rotate_" + playerId) * speed;
         Quaternion newRotation = Quaternion.Euler(0f, rotation, 0f);
         playerRigidbody.MoveRotation(newRotation);
     }
