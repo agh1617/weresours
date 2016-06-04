@@ -41,7 +41,7 @@ public class ZombieHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            playerState.score += scoreValue;
+            playerState.IncreaseScore(scoreValue);
             Death();
         }
     }

@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerState : MonoBehaviour {
     public int playerId;
-    public int score = 0;
+    public Text scoreText;
+    
+    int score = 0;
 
-	void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
+    public void IncreaseScore(int value)
+    {
+        score += value;
+        scoreText.text = "Score: " + score;
+    }
+
+    public void SetScore(int score)
+    {
+        this.score = score;
+        scoreText.text = "Score: " + score;
+    }
 }
