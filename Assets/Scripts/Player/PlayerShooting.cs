@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.15f;
+    public float timeBetweenBullets = 0.35f;
     public float range = 100f;
 
     int playerId;
@@ -15,6 +15,7 @@ public class PlayerShooting : MonoBehaviour
     int shootableMask;
     LineRenderer gunLine;
     float effectsDisplayTime = 0.2f;
+    AudioSource gunAudio;
     
     void Awake()
     {
@@ -22,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
         playerId = playerState.playerId;
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
+        gunAudio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +49,8 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         timer = 0f;
+
+        gunAudio.Play();
 
         gunLine.enabled = true;
         gunLine.SetPosition (0, transform.position);
