@@ -8,7 +8,7 @@ public class PauseScript : MonoBehaviour {
     bool paused;
 
 	void Start() {
-        pauseMenu = GetComponent<Canvas>();
+        pauseMenu = GameObject.Find("PauseMenu").GetComponent<Canvas>();
 
         pauseMenu.enabled = false;
         paused = false;

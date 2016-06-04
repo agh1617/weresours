@@ -32,9 +32,10 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-		if ((Input.GetButton("Fire_" + playerId) || Input.GetAxis("Fire_" + playerId) > 0) && timer >= timeBetweenBullets && Time.timeScale != 0)
+		if (playerHealth.currentHealth > 0 && timer >= timeBetweenBullets && Time.timeScale != 0)
         {
-            if (playerHealth.currentHealth > 0) Shoot();
+            if (Input.GetButton("Fire_" + playerId) || Input.GetAxis("Fire_" + playerId) > 0 || (playerId == 1 && Input.GetButton("Fire1")))
+               Shoot();
         }
 
         if(timer >= timeBetweenBullets * effectsDisplayTime)
