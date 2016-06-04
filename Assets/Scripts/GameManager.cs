@@ -7,7 +7,7 @@ public enum GameType { singleplayer, multiplayer }
 public static class GameManager
 {
     static GameState gameState = GameState.stopped;
-    static GameType gameType = GameType.singleplayer;
+    static GameType gameType = GameType.multiplayer;
 
     public static GameState GetGameState()
     {
