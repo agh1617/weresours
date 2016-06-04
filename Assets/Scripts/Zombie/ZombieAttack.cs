@@ -9,14 +9,14 @@ public class ZombieAttack : MonoBehaviour
 
     PlayerHealth playerHealth;
     ZombieHealth zombieHealth;
-    AudioSource audio;
+    AudioSource audioSource;
     bool playerInRange;
     float timer;
 
     void Awake()
     {
         zombieHealth = GetComponent<ZombieHealth>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,8 +58,8 @@ public class ZombieAttack : MonoBehaviour
 
         if (playerHealth.currentHealth > 0)
         {
-            audio.clip = attackClips[Random.Range(0, attackClips.Length)];
-            audio.Play();
+            audioSource.clip = attackClips[Random.Range(0, attackClips.Length)];
+            audioSource.Play();
             playerHealth.TakeDamage(attackDamage);
         }
     }

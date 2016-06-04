@@ -8,14 +8,14 @@ public class ZombieHealth : MonoBehaviour
     public int scoreValue = 10;
     
     ZombieBlood zombieBlood;
-    Collider collider;
+    Collider zombieCollider;
     bool isDead = false;
     bool isBleeding = false;
 
     void Awake()
     {
         this.zombieBlood = GetComponent<ZombieBlood>();
-        collider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
+        zombieCollider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
         currentHealth = startingHealth;
     }
 
@@ -59,6 +59,6 @@ public class ZombieHealth : MonoBehaviour
     {
         GetComponent<NavMeshAgent>().enabled = false;
         isDead = true;
-        collider.isTrigger = true;
+        zombieCollider.isTrigger = true;
     }
 }
