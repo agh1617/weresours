@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 
 public class MenuScript : MonoBehaviour {
 
@@ -38,11 +38,13 @@ public class MenuScript : MonoBehaviour {
 
     public void MultiplayerPress()
     {
+        GameManager.SetGameType(GameType.multiplayer);
         SceneManager.LoadScene("Sandbox");
     }
 
     public void SingleplayerPress()
     {
+        GameManager.SetGameType(GameType.singleplayer);
         SceneManager.LoadScene("Sandbox");
     }
 
