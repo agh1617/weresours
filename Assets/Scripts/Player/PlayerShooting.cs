@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
 
     int playerId;
     PlayerState playerState;
+    PlayerHealth playerHealth;
     float timer;
     Ray shootRay;
     RaycastHit shootHit;
@@ -20,6 +21,7 @@ public class PlayerShooting : MonoBehaviour
     void Awake()
     {
         playerState = transform.parent.parent.gameObject.GetComponent<PlayerState>();
+        playerHealth = transform.parent.parent.gameObject.GetComponent<PlayerHealth>();
         playerId = playerState.playerId;
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
@@ -32,7 +34,7 @@ public class PlayerShooting : MonoBehaviour
 
 		if ((Input.GetButton("Fire_" + playerId) || Input.GetAxis("Fire_" + playerId) > 0) && timer >= timeBetweenBullets && Time.timeScale != 0)
         {
-            Shoot();
+            if (playerHealth.currentHealth > 0) Shoot();
         }
 
         if(timer >= timeBetweenBullets * effectsDisplayTime)
