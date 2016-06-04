@@ -9,11 +9,13 @@ public class PlayersManager : MonoBehaviour {
     public Transform secondSpawnPoint;
 
     GameType gameType;
+    Canvas splitCanvas;
 
 	void Start()
     {
         gameType = GameManager.GetGameType();
-        
+        splitCanvas = GameObject.Find("SplitCanvas").GetComponent<Canvas>();
+    
         spawnPlayers();
         GameManager.SetGameState(GameState.started);
 	}
@@ -27,6 +29,7 @@ public class PlayersManager : MonoBehaviour {
         {
             case GameType.multiplayer:
                 playerTwo = (GameObject)Instantiate(playerTwo, secondSpawnPoint.position, secondSpawnPoint.rotation);
+                splitCanvas.enabled = true;
                 break;
             case GameType.singleplayer:
                 Camera cameraOne = playerOne.GetComponentInChildren<Camera>();
