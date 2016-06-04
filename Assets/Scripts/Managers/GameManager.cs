@@ -18,6 +18,7 @@ public static class GameManager
     public static void SetGameState(GameState gameState)
     {
         GameManager.gameState = gameState;
+        if (gameState == GameState.started) Time.timeScale = 1;
     }
 
     public static GameType GetGameType()
@@ -37,9 +38,14 @@ public static class GameManager
     {
         playersCount--;
 
-        if (playersCount == 0)
-        {
-            gameState = GameState.stopped;
-        }
+        if (playersCount == 0) EndGame();
+    }
+
+    static void EndGame()
+    {
+        gameState = GameState.stopped;
+        Time.timeScale = 0;
+        Canvas gameOverCanvas = GameObject.Find("GameOverScreen").GetComponent<Canvas>();
+        gameOverCanvas.enabled = true;
     }
 }
