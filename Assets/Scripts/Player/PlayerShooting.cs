@@ -14,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
     RaycastHit shootHit;
     int shootableMask;
     LineRenderer gunLine;
-    float effectsDisplayTime = 0.2f;
+    float effectsDisplayTime = 0.1f;
     AudioSource gunAudio;
     
     void Awake()
