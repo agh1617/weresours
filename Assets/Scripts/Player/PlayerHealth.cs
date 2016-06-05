@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -48,6 +48,13 @@ public class PlayerHealth : MonoBehaviour
             Death();
             GameManager.PlayerDied();
         }
+    }
+
+    public void Heal()
+    {
+        currentHealth = startingHealth;
+        damaged = false;
+        healthSlider.value = currentHealth;
     }
 
     void Death()

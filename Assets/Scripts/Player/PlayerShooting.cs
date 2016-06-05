@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 public class PlayerShooting : MonoBehaviour
 {
     public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.35f;
+    public float startTimeBetweenBullets = 0.35f;
+    public float minTimeBetweenBullets = 0.03f;
     public float range = 100f;
 
     int playerId;
@@ -17,7 +18,16 @@ public class PlayerShooting : MonoBehaviour
     LineRenderer gunLine;
     float effectsDisplayTime = 0.1f;
     AudioSource gunAudio;
-    
+    float timeBetweenBullets;
+
+    public void DoubleTap(float duration)
+    {
+        timeBetweenBullets = Math.Max(timeBetweenBullets / 2, minTimeBetweenBullets);
+
+        CancelInvoke("ResetShooting");
+        Invoke("ResetShooting", duration);
+    }
+
     void Awake()
     {
         playerState = transform.parent.parent.gameObject.GetComponent<PlayerState>();
@@ -26,6 +36,7 @@ public class PlayerShooting : MonoBehaviour
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
+        timeBetweenBullets = startTimeBetweenBullets;
     }
 
     void Update()
@@ -42,6 +53,11 @@ public class PlayerShooting : MonoBehaviour
         {
             DisableEffects();
         }
+    }
+
+    void ResetShooting()
+    {
+        timeBetweenBullets = startTimeBetweenBullets;
     }
 
     public void DisableEffects()

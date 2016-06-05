@@ -8,13 +8,16 @@ public class ZombieHealth : MonoBehaviour
     public int scoreValue = 10;
     
     ZombieBlood zombieBlood;
+    PerkFactory perkFactory;
     Collider zombieCollider;
     bool isDead = false;
     bool isBleeding = false;
 
     void Awake()
     {
-        this.zombieBlood = GetComponent<ZombieBlood>();
+        zombieBlood = GetComponent<ZombieBlood>();
+        perkFactory = GetComponent<PerkFactory>();
+
         zombieCollider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
         currentHealth = startingHealth;
     }
@@ -57,6 +60,7 @@ public class ZombieHealth : MonoBehaviour
 
     void Death()
     {
+        perkFactory.Generate();
         GetComponent<NavMeshAgent>().enabled = false;
         isDead = true;
         zombieCollider.isTrigger = true;

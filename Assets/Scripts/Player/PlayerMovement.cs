@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 6f;
+    public float startSpeed = 6f;
+    public float maxSpeed = 20f;
 
     int playerId;
     Vector3 movement;
@@ -10,12 +12,22 @@ public class PlayerMovement : MonoBehaviour
     float rotation = 0f;
     int floorMask;
     float camRayLength = 100f;
+    float speed;
+
+    public void StaminaUp(float duration)
+    {
+        speed = Math.Min(speed * 1.5f, maxSpeed);
+
+        CancelInvoke("ResetSpeed");
+        Invoke("ResetSpeed", duration);
+    }
 
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
         playerId = GetComponent<PlayerState>().playerId;
         playerRigidbody = GetComponent<Rigidbody>();
+        speed = startSpeed;
     }
 
     void FixedUpdate()
@@ -63,5 +75,10 @@ public class PlayerMovement : MonoBehaviour
         rotation += Input.GetAxis("Rotate_" + playerId) * speed;
         Quaternion newRotation = Quaternion.Euler(0f, rotation, 0f);
         playerRigidbody.MoveRotation(newRotation);
+    }
+
+    void ResetSpeed()
+    {
+        speed = startSpeed;
     }
 }
