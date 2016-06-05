@@ -20,6 +20,8 @@ namespace Assets.Scripts.Level
         {
             doors = from Door door in wallObject.GetComponents<Door>() orderby door.position select door.position;
             Render();
+
+            addSpawnPoint();
         }
 
         public void Render()
@@ -46,6 +48,19 @@ namespace Assets.Scripts.Level
             component.size = size;
             component.wallComponentObject = new GameObject("WallComponent");
             component.wallComponentObject.transform.parent = wallObject.transform;
+        }
+
+        private void addSpawnPoint()
+        {
+            var enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+            var spawnPoints = GameObject.Find("SpawnPoints");
+            var spawnPoint = new GameObject("SpawnPoint");
+
+            Vector3 relativePosition = new Vector3(this.size / 2, 0, 8);
+            spawnPoint.transform.parent = spawnPoints.transform;
+            spawnPoint.transform.position = this.wallObject.transform.TransformPoint(relativePosition);
+
+            enemyManager.spawnPoints.Add(spawnPoint.transform);
         }
     }
 }
