@@ -12,6 +12,7 @@ public class ZombieMovement : MonoBehaviour
     ZombieHealth zombieHealth;
     NavMeshAgent nav;
     AudioSource audioSource;
+    Animator animator;
     float timer;
 
     void Awake()
@@ -19,7 +20,11 @@ public class ZombieMovement : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
         zombieHealth = GetComponent<ZombieHealth>();
         nav = GetComponent<NavMeshAgent>();
+
         audioSource = GetComponent<AudioSource>();
+
+        animator = GetComponentInChildren<Animator>();
+        animator.SetFloat("Speed", 1f);
 
         timer = (float) 0.8 * timeBetweenSounds;
     }

@@ -9,6 +9,8 @@ public class ZombieHealth : MonoBehaviour
     
     ZombieBlood zombieBlood;
     PerkFactory perkFactory;
+    Animator animator;
+
     Collider zombieCollider;
     bool isDead = false;
     bool isBleeding = false;
@@ -17,6 +19,7 @@ public class ZombieHealth : MonoBehaviour
     {
         zombieBlood = GetComponent<ZombieBlood>();
         perkFactory = GetComponent<PerkFactory>();
+        animator = GetComponentInChildren<Animator>();
 
         zombieCollider = GetComponent<BoxCollider>(); // TODO change to more suitable collider
         currentHealth = startingHealth;
@@ -60,6 +63,7 @@ public class ZombieHealth : MonoBehaviour
 
     void Death()
     {
+        animator.SetBool("Dead", true);
         perkFactory.Generate();
         GetComponent<NavMeshAgent>().enabled = false;
         isDead = true;

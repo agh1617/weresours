@@ -10,6 +10,7 @@ public class ZombieAttack : MonoBehaviour
     PlayerHealth playerHealth;
     ZombieHealth zombieHealth;
     AudioSource audioSource;
+    Animator animator;
     bool playerInRange;
     float timer;
 
@@ -17,6 +18,7 @@ public class ZombieAttack : MonoBehaviour
     {
         zombieHealth = GetComponent<ZombieHealth>();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,6 +45,8 @@ public class ZombieAttack : MonoBehaviour
 
         if (timer >= timeBetweenAttacks && playerInRange && zombieHealth.currentHealth > 0)
         {
+            animator.Play("Attack");
+
             Attack();
 
             if (playerHealth.currentHealth <= 0)
