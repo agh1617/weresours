@@ -37,10 +37,17 @@ namespace Assets.Scripts.Level
             return room;
         }
 
-
         private  Room createNextRoom()
         {
-            return null;
+            var room = initializeRoom();
+            room.transform.localPosition = new Vector3(5.0f, 0.0f, -2.0f);
+
+            foreach (var otherRoom in this.previousRooms)
+            {
+                room.SubtractRoom(otherRoom);
+            }
+
+            return room;
         }
 
         private Room initializeRoom()
@@ -80,6 +87,18 @@ namespace Assets.Scripts.Level
         private int getRandomDoorPosition(int size)
         {
             return Mathf.RoundToInt(Random.Range(2, size - 4));
+        }
+
+        private List<Transform> getPotentialNextRoomPositions()
+        {
+            var positions = new List<Transform>();
+
+            foreach (Room room in this.previousRooms)
+            {
+                
+            }
+
+            return positions;
         }
     }
 }

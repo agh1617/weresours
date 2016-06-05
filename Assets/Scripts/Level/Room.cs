@@ -30,6 +30,16 @@ namespace Assets.Scripts.Level
             addDoors(wall, Directions.West);
         }
 
+        public void SubtractRoom(Room other)
+        {
+            var wallComponents = GetComponentsInChildren<WallComponent>();
+
+            foreach (var wallComponent in wallComponents)
+            {
+                wallComponent.SubtractRoom(other);
+            }
+        }
+
         private Wall createWall(int size, Directions direction, Vector3 position)
         {
             var wall = roomObject.AddComponent<Wall>();

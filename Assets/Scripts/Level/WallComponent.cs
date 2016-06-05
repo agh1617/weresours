@@ -31,5 +31,23 @@ namespace Assets.Scripts.Level
             
             wallComponentObject.transform.localPosition = new Vector3(x, 0.5f, 0.0f);
         }
+
+        public void SubtractRoom(Room other)
+        {
+            Vector3 otherRoomRelative = transform.InverseTransformDirection(other.transform.position);
+            
+            foreach (Transform wall in transform)
+            {
+                var position = wall.localPosition;
+                if (otherRoomRelative.x < position.x && (otherRoomRelative.x + other.width) > position.x)
+                {
+                    if (otherRoomRelative.y < position.y && (otherRoomRelative.y + other.height) > position.y)
+                    {
+                        wall.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+        }
     }
 }
