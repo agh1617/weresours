@@ -14,12 +14,14 @@ public class PlayerHealth : MonoBehaviour
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 
     PlayerMovement playerMovement;
+    Animator animator;
     bool isDead;
     bool damaged;
 
     void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponentInChildren<Animator>();
         currentHealth = startingHealth;
     }
 
@@ -59,6 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Death()
     {
+        animator.SetBool("Dead", true);
         isDead = true;
         playerMovement.enabled = false;
     }

@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float startSpeed = 6f;
     public float maxSpeed = 20f;
 
+    Animator animator;
     int playerId;
     Vector3 movement;
     Rigidbody playerRigidbody;
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         floorMask = LayerMask.GetMask("Floor");
         playerId = GetComponent<PlayerState>().playerId;
         playerRigidbody = GetComponent<Rigidbody>();
@@ -43,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.Set(h, 0f, v);
         movement = movement.normalized * speed * Time.deltaTime;
+
+        animator.SetFloat("Speed", movement.magnitude);
+
         playerRigidbody.MovePosition(transform.position + movement);
     }
 

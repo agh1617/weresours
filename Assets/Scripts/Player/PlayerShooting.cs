@@ -18,6 +18,7 @@ public class PlayerShooting : MonoBehaviour
     LineRenderer gunLine;
     float effectsDisplayTime = 0.1f;
     AudioSource gunAudio;
+    Animator animator;
     float timeBetweenBullets;
 
     public void DoubleTap(float duration)
@@ -32,6 +33,8 @@ public class PlayerShooting : MonoBehaviour
     {
         playerState = transform.parent.parent.gameObject.GetComponent<PlayerState>();
         playerHealth = transform.parent.parent.gameObject.GetComponent<PlayerHealth>();
+        animator = GetComponentInChildren<Animator>();
+
         playerId = playerState.playerId;
         shootableMask = LayerMask.GetMask("Shootable");
         gunLine = GetComponent<LineRenderer>();
@@ -67,6 +70,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
+        // animator.Play("Shoot");
+
         timer = 0f;
 
         gunAudio.Play();

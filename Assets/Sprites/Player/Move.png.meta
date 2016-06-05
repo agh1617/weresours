@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: 3d1699dfd71949f4d9143e93cc350ccd
+timeCreated: 1465154868
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Move_0
+    21300002: Move_1
+    21300004: Move_2
+    21300006: Move_3
+    21300008: Move_4
+    21300010: Move_5
+    21300012: Move_6
+    21300014: Move_7
+    21300016: Move_8
+    21300018: Move_9
+    21300020: Move_10
+    21300022: Move_11
+    21300024: Move_12
+    21300026: Move_13
+    21300028: Move_14
+    21300030: Move_15
+    21300032: Move_16
+    21300034: Move_17
+    21300036: Move_18
+    21300038: Move_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Move_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3914
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 16.100098}
+        - {x: -18, y: 36.100098}
+        - {x: -61, y: 36.100098}
+        - {x: -63, y: 28.100098}
+        - {x: -63, y: -41.899902}
+        - {x: -58, y: -43.899902}
+        - {x: 25, y: -43.899902}
+        - {x: 70, y: -33.899902}
+        - {x: 71, y: -32.899902}
+        - {x: 71, y: -14.899902}
+    - name: Move_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3708
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 35.700073}
+        - {x: -52, y: 35.700073}
+        - {x: -63, y: 19.700073}
+        - {x: -63, y: -40.299927}
+        - {x: -56, y: -44.299927}
+        - {x: 31, y: -44.299927}
+        - {x: 71, y: -29.299927}
+        - {x: 71, y: -19.299927}
+        - {x: 33, y: 20.700073}
+    - name: Move_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3502
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 15, y: 24.800049}
+        - {x: -17, y: 36.80005}
+        - {x: -47, y: 36.80005}
+        - {x: -63, y: 22.800049}
+        - {x: -63, y: -32.19995}
+        - {x: -57, y: -43.19995}
+        - {x: 21, y: -43.19995}
+        - {x: 37, y: -41.19995}
+        - {x: 70, y: -29.199951}
+        - {x: 70, y: -21.199951}
+        - {x: 69, y: -18.199951}
+    - name: Move_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3296
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 28, y: 32.900024}
+        - {x: 10, y: 35.900024}
+        - {x: -63, y: 35.900024}
+        - {x: -63, y: -40.099976}
+        - {x: -51, y: -44.099976}
+        - {x: 36, y: -44.099976}
+        - {x: 70, y: -38.099976}
+        - {x: 70, y: -19.099976}
+    - name: Move_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3090
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 35.5}
+        - {x: -41, y: 35.5}
+        - {x: -62, y: 25.5}
+        - {x: -63, y: 18.5}
+        - {x: -63, y: -33.5}
+        - {x: -57, y: -44.5}
+        - {x: 11, y: -44.5}
+        - {x: 56, y: -41.5}
+        - {x: 70, y: -38.5}
+        - {x: 70, y: -14.5}
+        - {x: 27, y: 29.5}
+    - name: Move_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2884
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 37.099976}
+        - {x: -63, y: 37.099976}
+        - {x: -63, y: -43.900024}
+        - {x: 30, y: -43.900024}
+        - {x: 69, y: -37.900024}
+        - {x: 69, y: -16.900024}
+        - {x: 23, y: 16.099976}
+    - name: Move_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2678
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 35.700073}
+        - {x: -58, y: 35.700073}
+        - {x: -64, y: 20.700073}
+        - {x: -64, y: -44.299927}
+        - {x: 41, y: -44.299927}
+        - {x: 69, y: -33.299927}
+        - {x: 69, y: -20.299927}
+        - {x: 68, y: -17.299927}
+    - name: Move_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2472
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: 36.80005}
+        - {x: -64, y: 35.80005}
+        - {x: -64, y: -43.19995}
+        - {x: 24, y: -43.19995}
+        - {x: 67, y: -38.19995}
+        - {x: 68, y: -33.19995}
+        - {x: 68, y: -22.199951}
+        - {x: -9, y: 36.80005}
+    - name: Move_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2266
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 36.900024}
+        - {x: -44, y: 36.900024}
+        - {x: -64, y: 21.900024}
+        - {x: -64, y: -38.099976}
+        - {x: -48, y: -43.099976}
+        - {x: 42, y: -43.099976}
+        - {x: 68, y: -40.099976}
+        - {x: 68, y: -23.099976}
+        - {x: 23, y: 22.900024}
+    - name: Move_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2060
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42, y: 36.5}
+        - {x: -64, y: 22.5}
+        - {x: -64, y: -33.5}
+        - {x: -53, y: -44.5}
+        - {x: 12, y: -44.5}
+        - {x: 65, y: -40.5}
+        - {x: 68, y: -38.5}
+        - {x: 68, y: -22.5}
+        - {x: 4, y: 36.5}
+    - name: Move_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1854
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 37.100037}
+        - {x: -65, y: 37.100037}
+        - {x: -65, y: -35.899963}
+        - {x: -51, y: -42.899963}
+        - {x: 18, y: -42.899963}
+        - {x: 67, y: -39.899963}
+        - {x: 67, y: -21.899963}
+        - {x: 43, y: 24.100037}
+    - name: Move_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1648
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45, y: 36.700012}
+        - {x: -55, y: 31.700012}
+        - {x: -64, y: 22.700012}
+        - {x: -64, y: -44.299988}
+        - {x: 33, y: -44.299988}
+        - {x: 68, y: -38.299988}
+        - {x: 68, y: -20.299988}
+        - {x: -10, y: 36.700012}
+    - name: Move_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1442
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 19.799988}
+        - {x: -11, y: 35.799988}
+        - {x: -16, y: 37.799988}
+        - {x: -48, y: 37.799988}
+        - {x: -64, y: 24.799988}
+        - {x: -64, y: -43.200012}
+        - {x: 38, y: -43.200012}
+        - {x: 66, y: -36.200012}
+        - {x: 68, y: -32.200012}
+        - {x: 68, y: -23.200012}
+    - name: Move_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1236
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 36.900024}
+        - {x: -64, y: -44.099976}
+        - {x: 41, y: -44.099976}
+        - {x: 68, y: -34.099976}
+        - {x: 68, y: -23.099976}
+        - {x: -8, y: 36.900024}
+    - name: Move_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1030
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51, y: -44.5}
+        - {x: 42, y: -44.5}
+        - {x: 69, y: -42.5}
+        - {x: 69, y: -17.5}
+        - {x: 19, y: 35.5}
+        - {x: -57, y: 35.5}
+        - {x: -64, y: 31.5}
+        - {x: -64, y: -34.5}
+    - name: Move_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 824
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 37.100006}
+        - {x: -63, y: 37.100006}
+        - {x: -63, y: -43.899994}
+        - {x: 30, y: -43.899994}
+        - {x: 69, y: -37.899994}
+        - {x: 69, y: -16.899994}
+        - {x: 23, y: 16.100006}
+    - name: Move_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 618
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: -35.299988}
+        - {x: -52, y: -44.299988}
+        - {x: 20, y: -44.299988}
+        - {x: 70, y: -36.299988}
+        - {x: 70, y: -15.299988}
+        - {x: 14, y: 35.700012}
+        - {x: -47, y: 35.700012}
+        - {x: -63, y: 18.700012}
+    - name: Move_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: 36.800003}
+        - {x: -47, y: 36.800003}
+        - {x: -63, y: 23.800003}
+        - {x: -63, y: -40.199997}
+        - {x: -54, y: -43.199997}
+        - {x: 27, y: -43.199997}
+        - {x: 70, y: -33.199997}
+        - {x: 70, y: -19.199997}
+        - {x: 68, y: -17.199997}
+    - name: Move_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 206
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 35.9}
+        - {x: -49, y: 35.9}
+        - {x: -63, y: 17.900002}
+        - {x: -63, y: -44.1}
+        - {x: 57, y: -44.1}
+        - {x: 70, y: -27.099998}
+        - {x: 70, y: -14.099998}
+        - {x: 25, y: 21.900002}
+    - name: Move_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 313
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 35.5}
+        - {x: -62, y: 35.5}
+        - {x: -63, y: 34.5}
+        - {x: -63, y: -45.5}
+        - {x: 44, y: -45.5}
+        - {x: 71, y: -30.5}
+        - {x: 71, y: -1.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
