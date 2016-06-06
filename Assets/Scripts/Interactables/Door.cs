@@ -3,20 +3,22 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
     public float doorSpeed = 10f;
-    public int doorHealth = 200;
-
-    bool isOpened = true;
+    public int initialDoorHealth = 200;
+    public bool close = true;
+    
     int playersInRange = 0;
+    int doorHealth;
 
     void Awake()
     {
+        doorHealth = initialDoorHealth;
     }
 
     void Update()
     {
         if (playersInRange > 0 && (Input.GetButtonDown("Action_1") || Input.GetButtonDown("Action_2")))
         {
-            isOpened = !isOpened;
+            close = !close;
         }
         Move();
     }
@@ -36,13 +38,15 @@ public class Door : MonoBehaviour {
         doorHealth -= amount;
         if (doorHealth <= 0)
         {
-            gameObject.SetActive(false);
+            close = false;
+            doorHealth = initialDoorHealth;
+            //gameObject.SetActive(false);
         }
     }
 
     void Move()
     {
-        if (isOpened)
+        if (close)
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * doorSpeed);
         }
