@@ -8,6 +8,9 @@ public class PlayerShooting : MonoBehaviour
     public float minTimeBetweenBullets = 0.03f;
     public float range = 100f;
 
+    public Transform bulletTrailPrefab;
+    public Transform muzzleFlashPrefabl;
+
     int playerId;
     PlayerState playerState;
     PlayerHealth playerHealth;
@@ -15,7 +18,6 @@ public class PlayerShooting : MonoBehaviour
     Ray shootRay;
     RaycastHit shootHit;
     int shootableMask;
-    LineRenderer gunLine;
     float effectsDisplayTime = 0.1f;
     AudioSource gunAudio;
     Animator animator;
@@ -37,7 +39,6 @@ public class PlayerShooting : MonoBehaviour
 
         playerId = playerState.playerId;
         shootableMask = LayerMask.GetMask("Shootable");
-        gunLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         timeBetweenBullets = startTimeBetweenBullets;
     }
@@ -51,11 +52,6 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetButton("Fire_" + playerId) || Input.GetAxis("Fire_" + playerId) > 0 || (playerId == 1 && Input.GetButton("Fire1")))
                Shoot();
         }
-
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
-        {
-            DisableEffects();
-        }
     }
 
     void ResetShooting()
@@ -63,21 +59,14 @@ public class PlayerShooting : MonoBehaviour
         timeBetweenBullets = startTimeBetweenBullets;
     }
 
-    public void DisableEffects()
-    {
-        gunLine.enabled = false;
-    }
-
     void Shoot()
     {
+        Effect();
         // animator.Play("Shoot");
 
         timer = 0f;
 
         gunAudio.Play();
-
-        gunLine.enabled = true;
-        gunLine.SetPosition (0, transform.position);
 
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
@@ -89,11 +78,22 @@ public class PlayerShooting : MonoBehaviour
             {
                 zombieHealth.TakeDamage(playerState, damagePerShot);
             }
-            gunLine.SetPosition(1, shootHit.point);
         }
-        else
-        {
-            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
-        }
+    }
+
+    void Effect()
+    {
+        BulletTrail();
+        MuzzleFlash();
+    }
+
+    void BulletTrail()
+    {
+        Instantiate(bulletTrailPrefab, transform.position, transform.rotation);
+    }
+
+    void MuzzleFlash()
+    {
+
     }
 }
