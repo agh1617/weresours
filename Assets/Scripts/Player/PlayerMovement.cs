@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject floor;
     float rotation = 0f;
     int floorMask;
-    float camRayLength = 100f;
+    float camRayLength = 30f;
     float speed;
     Vector3 upperBounds;
     Vector3 lowerBounds;
