@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Door : MonoBehaviour {
     public float openDoorSpeed = 5f;
@@ -9,19 +10,22 @@ public class Door : MonoBehaviour {
     public AudioClip openClip;
     public AudioClip closeClip;
 
-    int playersInRange = 0;
+    HashSet<Collider> playersInRange;
     int doorHealth;
     AudioSource audioSource;
+    BoxCollider boxCollider;
 
     void Awake()
     {
         doorHealth = initialDoorHealth;
         audioSource = GetComponent<AudioSource>();
+        boxCollider = GetComponentInChildren<BoxCollider>();
+        playersInRange = new HashSet<Collider>();
     }
 
     void Update()
     {
-        if (playersInRange > 0 && (Input.GetButtonDown("Action_1") || Input.GetButtonDown("Action_2")))
+        if (playersInRange.Count > 0 && (Input.GetButtonDown("Action_1") || Input.GetButtonDown("Action_2")))
         {
             close = !close;
             PlaySound();
@@ -31,12 +35,12 @@ public class Door : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") playersInRange++;
+        if (other.gameObject.tag == "Player") playersInRange.Add(other);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player") playersInRange--;
+        if (other.gameObject.tag == "Player") playersInRange.Remove(other);
     }
 
     public void TakeDamage(int amount)
@@ -55,10 +59,12 @@ public class Door : MonoBehaviour {
         if (close)
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * closeDoorSpeed);
+            boxCollider.enabled = true;
         }
         else
         {
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 90f, 0f), Time.deltaTime * openDoorSpeed);
+            boxCollider.enabled = false;
         }
     }
 

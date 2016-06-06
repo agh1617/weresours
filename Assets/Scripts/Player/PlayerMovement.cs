@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     float speed;
     Vector3 upperBounds;
     Vector3 lowerBounds;
+    Ray movementRay;
 
     public void StaminaUp(float duration)
     {
@@ -104,5 +105,14 @@ public class PlayerMovement : MonoBehaviour
         lowerBounds.x = floor.transform.position.x - floor.transform.localScale.x * 5;
         lowerBounds.y = 0;
         lowerBounds.z = floor.transform.position.z - floor.transform.localScale.z * 5;
+    }
+
+    bool CheckFloor()
+    {
+        movementRay.origin = transform.position + movement;
+        movementRay.direction = -transform.up;
+        RaycastHit floorHit;
+
+        return Physics.Raycast(movementRay, out floorHit, 10, LayerMask.GetMask("RoomFloor"));
     }
 }
