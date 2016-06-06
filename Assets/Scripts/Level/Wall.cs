@@ -32,7 +32,7 @@ namespace Assets.Scripts.Level
             foreach (var doorPosition in doors)
             {
                 AddWallComponent(sourceWall, currentPosition, doorPosition - currentPosition);
-                AddWallComponent(sourceDoor, doorPosition, 2);
+                AddWallComponent(sourceDoor, doorPosition, 1, true);
 
                 currentPosition = doorPosition + 2;
             }
@@ -41,7 +41,7 @@ namespace Assets.Scripts.Level
             wallObject.transform.localRotation = Quaternion.Euler(0.0f, (float)direction, 0.0f);
         }
 
-        private void AddWallComponent(GameObject sourceObject, int position, int size)
+        private void AddWallComponent(GameObject sourceObject, int position, int size, bool isDoor = false)
         {
             var component = wallObject.AddComponent<WallComponent>();
             component.roomsToRemove = new List<Room>();
@@ -50,6 +50,7 @@ namespace Assets.Scripts.Level
             component.size = size;
             component.wallComponentObject = new GameObject("WallComponent");
             component.wallComponentObject.transform.parent = wallObject.transform;
+            component.isDoor = isDoor;
         }
 
         private void addSpawnPoint()

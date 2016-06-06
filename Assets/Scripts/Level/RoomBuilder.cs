@@ -106,11 +106,6 @@ namespace Assets.Scripts.Level
         {
             var positions = new List<Transform>();
 
-            foreach (Room room in this.previousRooms)
-            {
-                
-            }
-
             return positions;
         }
     }
