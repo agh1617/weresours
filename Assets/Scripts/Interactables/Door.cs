@@ -2,16 +2,21 @@
 using System.Collections;
 
 public class Door : MonoBehaviour {
-    public float doorSpeed = 10f;
+    public float openDoorSpeed = 5f;
+    public float closeDoorSpeed = 10f;
     public int initialDoorHealth = 200;
     public bool close = true;
-    
+    public AudioClip openClip;
+    public AudioClip closeClip;
+
     int playersInRange = 0;
     int doorHealth;
+    AudioSource audioSource;
 
     void Awake()
     {
         doorHealth = initialDoorHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -19,6 +24,7 @@ public class Door : MonoBehaviour {
         if (playersInRange > 0 && (Input.GetButtonDown("Action_1") || Input.GetButtonDown("Action_2")))
         {
             close = !close;
+            PlaySound();
         }
         Move();
     }
@@ -48,11 +54,18 @@ public class Door : MonoBehaviour {
     {
         if (close)
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * doorSpeed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 0f, 0f), Time.deltaTime * closeDoorSpeed);
         }
         else
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 90f, 0f), Time.deltaTime * doorSpeed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f, 90f, 0f), Time.deltaTime * openDoorSpeed);
         }
+    }
+
+    void PlaySound()
+    {
+        if (close) audioSource.clip = closeClip;
+        else audioSource.clip = openClip;
+        audioSource.Play();
     }
 }
