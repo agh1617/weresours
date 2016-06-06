@@ -7,6 +7,7 @@ namespace Assets.Scripts.Level
         public GameObject wallComponent;
         public GameObject doorComponent;
         public GameObject floorComponent;
+        public Material[] floorMaterials;
 
         public void Render(Room[] rooms)
         {

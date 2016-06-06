@@ -35,6 +35,7 @@ namespace Assets.Scripts.Level
             wall.Render();
 
             InitializeFloor();
+
             foreach (Room other in previousRooms)
             {
                 SubtractRoom(other);
@@ -64,6 +65,9 @@ namespace Assets.Scripts.Level
             var floor = (GameObject)Instantiate(levelRenderer.floorComponent, position, rotation);
             floor.transform.SetParent(roomObject.transform, false);
             floor.transform.localScale = new Vector3(width / 10f, 1f, height / 10f);
+            if (levelRenderer.floorMaterials.Length > 0)
+                floor.GetComponent<Renderer>().material = levelRenderer.floorMaterials[Random.Range(0, levelRenderer.floorMaterials.Length)];
+
         }
 
         private Wall createWall(int size, Directions direction, Vector3 position)
