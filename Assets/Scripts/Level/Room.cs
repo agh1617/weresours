@@ -33,7 +33,8 @@ namespace Assets.Scripts.Level
             wall = createWall(height, Directions.West, new Vector3(0.0f, 0.0f, -height));
             addDoors(wall, Directions.West);
             wall.Render();
-          
+
+            InitializeFloor();
             foreach (Room other in previousRooms)
             {
                 SubtractRoom(other);
@@ -53,6 +54,16 @@ namespace Assets.Scripts.Level
             {
                 wallComponent.SubtractRoom(other);
             }
+        }
+
+        void InitializeFloor()
+        {
+            var position = new Vector3(transform.localPosition.x + width / 2f, 0.1f, transform.localPosition.z - height / 2f);
+            var rotation = new Quaternion();
+
+            var floor = (GameObject)Instantiate(levelRenderer.floorComponent, position, rotation);
+            floor.transform.SetParent(roomObject.transform, false);
+            floor.transform.localScale = new Vector3(width / 10f, 1f, height / 10f);
         }
 
         private Wall createWall(int size, Directions direction, Vector3 position)

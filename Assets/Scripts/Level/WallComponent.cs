@@ -30,7 +30,7 @@ namespace Assets.Scripts.Level
             wallComponentObject.transform.localPosition = new Vector3(x, 0.5f, 0.0f);
             if (this.isDoor)
             {
-                wallComponentObject.transform.localPosition += new Vector3(-0.5f, 0f, 0.4f);
+                wallComponentObject.transform.localPosition += new Vector3(-0.5f, 0f, 0f);
             }
 
 

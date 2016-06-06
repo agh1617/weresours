@@ -41,7 +41,6 @@ namespace Assets.Scripts.Level
         {
             var room = initializeRoom();
             room.roomObject.transform.localPosition = nextRoomPosition(); // new Vector3(5.0f, 0.0f, -2.0f);
-            
             room.SetPreviousRooms(new List<Room>(this.previousRooms));
 
             return room;
