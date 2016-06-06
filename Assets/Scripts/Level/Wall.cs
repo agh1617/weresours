@@ -18,14 +18,15 @@ namespace Assets.Scripts.Level
 
         public void Start()
         {
-            doors = from Door door in wallObject.GetComponents<Door>() orderby door.position select door.position;
-            Render();
+            //Render();
 
             addSpawnPoint();
         }
 
         public void Render()
         {
+            doors = from Door door in wallObject.GetComponents<Door>() orderby door.position select door.position;
+
             int currentPosition = 0;
 
             foreach (var doorPosition in doors)
@@ -43,6 +44,7 @@ namespace Assets.Scripts.Level
         private void AddWallComponent(GameObject sourceObject, int position, int size)
         {
             var component = wallObject.AddComponent<WallComponent>();
+            component.roomsToRemove = new List<Room>();
             component.sourceObject = sourceObject;
             component.x = position;
             component.size = size;

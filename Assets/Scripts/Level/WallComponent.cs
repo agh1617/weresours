@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Level
 {
@@ -10,12 +11,7 @@ namespace Assets.Scripts.Level
 
         public GameObject wallComponentObject;
 
-        public WallComponent(GameObject sourceObject, float x, float size, Directions direction)
-        {
-            this.sourceObject = sourceObject;
-            this.x = x;
-            this.size = size;
-        }
+        public List<Room> roomsToRemove;
 
         public void Start()
         {
@@ -24,30 +20,44 @@ namespace Assets.Scripts.Level
 
             for (int i = 0; i < size; i++)
             {
-                var wallElement = (GameObject)Instantiate(sourceObject, position, rotation);
-                wallElement.transform.SetParent(wallComponentObject.transform, false);
+                var brick = (GameObject)Instantiate(sourceObject, position, rotation);
+                brick.transform.SetParent(wallComponentObject.transform, false);
+                Brick brickComponent = brick.AddComponent<Brick>();
                 position.x += 1;
             }
             
             wallComponentObject.transform.localPosition = new Vector3(x, 0.5f, 0.0f);
+
+            removeOverlappingWallComponents();
         }
 
         public void SubtractRoom(Room other)
         {
-            Vector3 otherRoomRelative = transform.InverseTransformDirection(other.transform.position);
+            this.roomsToRemove.Add(other);
+        }
+
+        private void removeOverlappingWallComponents()
+        {
+            //Vector3 otherRoomRelative = transform.InverseTransformDirection(other.transform.position);
             
-            foreach (Transform wall in transform)
+            //var walls = GetComponents<Wall>();
+            foreach (var room in this.roomsToRemove)
             {
-                var position = wall.localPosition;
-                if (otherRoomRelative.x < position.x && (otherRoomRelative.x + other.width) > position.x)
+                var otherPosition = room.roomObject.transform.position;
+
+                foreach (Transform wall in wallComponentObject.transform)
                 {
-                    if (otherRoomRelative.y < position.y && (otherRoomRelative.y + other.height) > position.y)
+                    var position = wall.position;
+
+                    if (otherPosition.x - 0.5 < position.x && (otherPosition.x + room.width) > position.x - 0.5)
                     {
-                        wall.gameObject.SetActive(false);
+                        if (otherPosition.z - room.height - 0.5 < position.z && (otherPosition.z) > position.z - 0.5)
+                        {
+                            wall.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
-
         }
     }
 }

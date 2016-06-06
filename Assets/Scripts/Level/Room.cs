@@ -12,6 +12,7 @@ namespace Assets.Scripts.Level
         public Dictionary<Directions, int[]> doors = new Dictionary<Directions, int[]>();
         public GameObject roomObject;
         public LevelRenderer levelRenderer;
+        List<Room> previousRooms;
 
         public void Start()
         {
@@ -19,21 +20,35 @@ namespace Assets.Scripts.Level
 
             wall = createWall(width, Directions.North, new Vector3(0.0f, 0.0f, 0.0f));
             addDoors(wall, Directions.North);
+            wall.Render();
 
             wall = createWall(height, Directions.East, new Vector3(width, 0.0f, 0.0f));
             addDoors(wall, Directions.East);
+            wall.Render();
 
             wall = createWall(width, Directions.South, new Vector3(width, 0.0f, -height));
             addDoors(wall, Directions.South);
+            wall.Render();
 
             wall = createWall(height, Directions.West, new Vector3(0.0f, 0.0f, -height));
             addDoors(wall, Directions.West);
+            wall.Render();
+          
+            foreach (Room other in previousRooms)
+            {
+                SubtractRoom(other);
+            }
+        }
+
+        public void SetPreviousRooms(List<Room> previousRooms)
+        {
+            this.previousRooms = previousRooms;
         }
 
         public void SubtractRoom(Room other)
         {
-            var wallComponents = GetComponentsInChildren<WallComponent>();
-
+            var wallComponents = roomObject.GetComponentsInChildren<WallComponent>();
+    
             foreach (var wallComponent in wallComponents)
             {
                 wallComponent.SubtractRoom(other);

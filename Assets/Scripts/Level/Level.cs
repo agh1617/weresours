@@ -18,6 +18,8 @@ namespace Assets.Scripts.Level
             rooms = new List<Room>();
             generateRooms();
 
+            transform.position = new Vector3(0, 0, 0);
+
             levelRenderer.Render(rooms.ToArray());
         }
 
