@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -8,8 +7,8 @@ public class PlayerShooting : MonoBehaviour
     public float minTimeBetweenBullets = 0.03f;
     public float range = 100f;
 
-    public Transform bulletTrailPrefab;
-    public Transform muzzleFlashPrefabl;
+    public Transform bulletTrail;
+    public Transform muzzleFlash;
 
     int playerId;
     PlayerState playerState;
@@ -25,7 +24,7 @@ public class PlayerShooting : MonoBehaviour
 
     public void DoubleTap(float duration)
     {
-        timeBetweenBullets = Math.Max(timeBetweenBullets / 2, minTimeBetweenBullets);
+        timeBetweenBullets = Mathf.Max(timeBetweenBullets / 2, minTimeBetweenBullets);
 
         CancelInvoke("ResetShooting");
         Invoke("ResetShooting", duration);
@@ -62,7 +61,8 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         Effect();
-        // animator.Play("Shoot");
+
+        //animator.Play("Shoot");
 
         timer = 0f;
 
@@ -89,11 +89,21 @@ public class PlayerShooting : MonoBehaviour
 
     void BulletTrail()
     {
-        Instantiate(bulletTrailPrefab, transform.position, transform.rotation);
+        Instantiate(bulletTrail, transform.position, transform.rotation);
     }
 
     void MuzzleFlash()
     {
+        Transform flash = (Transform) Instantiate(muzzleFlash, transform.position, transform.rotation);
 
+        flash.parent = transform;
+
+        flash.localRotation = muzzleFlash.localRotation;
+        flash.localPosition = muzzleFlash.localPosition;
+
+        float flashSize = Random.Range(0.6f, 0.9f);
+        flash.localScale = new Vector3(flashSize, flashSize, flashSize);
+
+        Destroy(flash.gameObject, 0.02f);
     }
 }
