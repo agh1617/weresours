@@ -101,9 +101,9 @@ public class PlayerShooting : MonoBehaviour
         flash.localRotation = muzzleFlash.localRotation;
         flash.localPosition = muzzleFlash.localPosition;
 
-        float flashSize = Random.Range(0.6f, 0.9f);
+        float flashSize = Random.Range(0.7f, 0.9f);
         flash.localScale = new Vector3(flashSize, flashSize, flashSize);
 
-        Destroy(flash.gameObject, 0.02f);
+        Destroy(flash.gameObject, 0.03f);
     }
 }
