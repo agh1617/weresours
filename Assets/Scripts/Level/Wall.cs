@@ -18,9 +18,6 @@ namespace Assets.Scripts.Level
 
         public void Start()
         {
-            //Render();
-
-            addSpawnPoint();
         }
 
         public void Render()
@@ -51,19 +48,6 @@ namespace Assets.Scripts.Level
             component.wallComponentObject = new GameObject("WallComponent");
             component.wallComponentObject.transform.parent = wallObject.transform;
             component.isDoor = isDoor;
-        }
-
-        private void addSpawnPoint()
-        {
-            var enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
-            var spawnPoints = GameObject.Find("SpawnPoints");
-            var spawnPoint = new GameObject("SpawnPoint");
-
-            Vector3 relativePosition = new Vector3(this.size / 2, 0, 8);
-            spawnPoint.transform.parent = spawnPoints.transform;
-            spawnPoint.transform.position = this.wallObject.transform.TransformPoint(relativePosition);
-
-            enemyManager.spawnPoints.Add(spawnPoint.transform);
         }
     }
 }

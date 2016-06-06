@@ -10,11 +10,9 @@ namespace Assets.Scripts.Level
         public int roomCount;
 
         private List<Room> rooms;
-        private GameObject spawnPointsParent;
 
         void Start()
         {
-            this.spawnPointsParent = new GameObject("SpawnPoints");
             rooms = new List<Room>();
             generateRooms();
 
