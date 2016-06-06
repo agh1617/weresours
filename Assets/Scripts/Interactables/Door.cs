@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
     public float doorSpeed = 10f;
+    public int doorHealth = 200;
 
     bool isOpened = true;
     int playersInRange = 0;
@@ -22,17 +23,20 @@ public class Door : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            playersInRange++;
-        }
+        if (other.gameObject.tag == "Player") playersInRange++;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player") playersInRange--;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        doorHealth -= amount;
+        if (doorHealth <= 0)
         {
-            playersInRange--;
+            gameObject.SetActive(false);
         }
     }
 
