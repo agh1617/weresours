@@ -85,18 +85,18 @@ namespace Assets.Scripts.Level
             {
                 randomObjectIdx = Random.Range(0, levelRenderer.terrainObjects.Length);
                 objectToDistribute = levelRenderer.terrainObjects[randomObjectIdx];
-                objectPosition = RandomPositionInsideRoom();
+                objectPosition = RandomPositionInsideRoom(objectToDistribute);
                 Instantiate(objectToDistribute, objectPosition, objectRotation);
             }
         }
 
-        Vector3 RandomPositionInsideRoom()
+        Vector3 RandomPositionInsideRoom(Transform objectToDistrubute)
         {
-            int wallOffsetX = (int) 0.3 * width;
-            int wallOffsetY = (int) 0.3 * height;
+            int wallOffsetX = (int) objectToDistrubute.localScale.x / 2;
+            int wallOffsetZ = (int) objectToDistrubute.localScale.z / 2;
 
             int x = Random.Range(wallOffsetX, width - wallOffsetX);
-            int z = -Random.Range(wallOffsetY, height - wallOffsetY);
+            int z = -Random.Range(wallOffsetZ, height - wallOffsetZ);
             
             x += (int) roomObject.transform.position.x;
             z += (int) roomObject.transform.position.z;
