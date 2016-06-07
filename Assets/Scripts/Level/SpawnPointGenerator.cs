@@ -6,6 +6,7 @@ namespace Assets.Scripts.Level
     {
         public int spawnPointCount = 16;
         public float margin = 5.0f;
+        public GameObject containerComponent;
 
         public void Start()
         {
@@ -40,6 +41,8 @@ namespace Assets.Scripts.Level
             spawnPoint.transform.parent = spawnPoints.transform;
             spawnPoint.transform.position = location;
             enemyManager.spawnPoints.Add(spawnPoint.transform);
+
+            Instantiate(containerComponent, new Vector3(location.x, 0, location.z + 5), Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         }
     }
 }

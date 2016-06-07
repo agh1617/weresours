@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     PlayerMovement playerMovement;
     Animator animator;
+    Light spotlight;
     bool isDead;
     bool damaged;
 
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
+        spotlight = GetComponentInChildren<Light>();
         currentHealth = startingHealth;
     }
 
@@ -61,8 +63,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Death()
     {
+
         animator.SetBool("Dead", true);
         isDead = true;
+        spotlight.gameObject.SetActive(false);
         playerMovement.enabled = false;
     }
 }

@@ -73,7 +73,7 @@ namespace Assets.Scripts.Level
 
         void DistributeTerrainObjects()
         {
-            int objectsCount = Random.Range(3, 5);
+            int objectsCount = Random.Range(5, 7);
             int randomObjectIdx;
 
             Transform objectToDistribute;
