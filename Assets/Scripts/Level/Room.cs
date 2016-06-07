@@ -35,6 +35,7 @@ namespace Assets.Scripts.Level
             wall.Render();
 
             InitializeFloor();
+            DistributeTerrainObjects();
 
             foreach (Room other in previousRooms)
             {
@@ -68,6 +69,39 @@ namespace Assets.Scripts.Level
             if (levelRenderer.floorMaterials.Length > 0)
                 floor.GetComponent<Renderer>().material = levelRenderer.floorMaterials[Random.Range(0, levelRenderer.floorMaterials.Length)];
 
+        }
+
+        void DistributeTerrainObjects()
+        {
+            int objectsCount = Random.Range(3, 5);
+            int randomObjectIdx;
+
+            Transform objectToDistribute;
+
+            Vector3 objectPosition;
+            Quaternion objectRotation = new Quaternion();
+
+            for (int i = 0; i < objectsCount; i++)
+            {
+                randomObjectIdx = Random.Range(0, levelRenderer.terrainObjects.Length);
+                objectToDistribute = levelRenderer.terrainObjects[randomObjectIdx];
+                objectPosition = RandomPositionInsideRoom();
+                Instantiate(objectToDistribute, objectPosition, objectRotation);
+            }
+        }
+
+        Vector3 RandomPositionInsideRoom()
+        {
+            int wallOffsetX = (int) 0.3 * width;
+            int wallOffsetY = (int) 0.3 * height;
+
+            int x = Random.Range(wallOffsetX, width - wallOffsetX);
+            int z = -Random.Range(wallOffsetY, height - wallOffsetY);
+            
+            x += (int) roomObject.transform.position.x;
+            z += (int) roomObject.transform.position.z;
+
+            return new Vector3(x, 0.1f, z);
         }
 
         private Wall createWall(int size, Directions direction, Vector3 position)
