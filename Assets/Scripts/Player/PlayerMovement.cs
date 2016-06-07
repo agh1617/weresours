@@ -10,10 +10,14 @@ public class PlayerMovement : MonoBehaviour
     int playerId;
     Vector3 movement;
     Rigidbody playerRigidbody;
+    GameObject floor;
     float rotation = 0f;
     int floorMask;
-    float camRayLength = 100f;
+    float camRayLength = 30f;
     float speed;
+    Vector3 upperBounds;
+    Vector3 lowerBounds;
+    Ray movementRay;
 
     public void StaminaUp(float duration)
     {
@@ -27,10 +31,13 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
 
+        floor = GameObject.Find("Floor");
         floorMask = LayerMask.GetMask("Floor");
         playerId = GetComponent<PlayerState>().playerId;
         playerRigidbody = GetComponent<Rigidbody>();
         speed = startSpeed;
+
+        CalculateFloorBounds();
     }
 
     void FixedUpdate()
@@ -49,7 +56,9 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("Speed", movement.magnitude);
 
-        playerRigidbody.MovePosition(transform.position + movement);
+        if (lowerBounds.x < transform.position.x + movement.x && transform.position.x + movement.x < upperBounds.x)
+            if (lowerBounds.z < transform.position.z + movement.z && transform.position.z + movement.z < upperBounds.z)
+                playerRigidbody.MovePosition(transform.position + movement);
     }
 
     void Turning()
@@ -86,5 +95,24 @@ public class PlayerMovement : MonoBehaviour
     void ResetSpeed()
     {
         speed = startSpeed;
+    }
+
+    void CalculateFloorBounds()
+    {
+        upperBounds.x = floor.transform.position.x + floor.transform.localScale.x * 5;
+        upperBounds.y = 0;
+        upperBounds.z = floor.transform.position.z + floor.transform.localScale.z * 5;
+        lowerBounds.x = floor.transform.position.x - floor.transform.localScale.x * 5;
+        lowerBounds.y = 0;
+        lowerBounds.z = floor.transform.position.z - floor.transform.localScale.z * 5;
+    }
+
+    bool CheckFloor()
+    {
+        movementRay.origin = transform.position + movement;
+        movementRay.direction = -transform.up;
+        RaycastHit floorHit;
+
+        return Physics.Raycast(movementRay, out floorHit, 10, LayerMask.GetMask("RoomFloor"));
     }
 }

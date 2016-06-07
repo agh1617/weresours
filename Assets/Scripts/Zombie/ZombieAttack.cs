@@ -11,7 +11,9 @@ public class ZombieAttack : MonoBehaviour
     ZombieHealth zombieHealth;
     AudioSource audioSource;
     Animator animator;
+    Door door;
     bool playerInRange;
+    bool doorInRange;
     float timer;
 
     void Awake()
@@ -28,6 +30,11 @@ public class ZombieAttack : MonoBehaviour
             playerHealth = other.GetComponent<PlayerHealth>();
             playerInRange = true;
         }
+        else if (other.gameObject.tag == "Door")
+        {
+            door = other.GetComponent<Door>();
+            doorInRange = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -37,22 +44,21 @@ public class ZombieAttack : MonoBehaviour
             playerHealth = null;
             playerInRange = false;
         }
+        else if (other.gameObject.tag == "Door")
+        {
+            door = null;
+            doorInRange = false;
+        }
     }
 
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeBetweenAttacks && playerInRange && zombieHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && (playerInRange || doorInRange) && zombieHealth.currentHealth > 0)
         {
-            animator.Play("Attack");
-
             Attack();
-
-            if (playerHealth.currentHealth <= 0)
-            {
-                playerInRange = false;
-            }
+            
         }
     }
 
@@ -60,11 +66,19 @@ public class ZombieAttack : MonoBehaviour
     {
         timer = 0f;
 
-        if (playerHealth.currentHealth > 0)
+        animator.Play("Attack");
+        audioSource.clip = attackClips[Random.Range(0, attackClips.Length)];
+        audioSource.Play();
+
+        if (playerInRange && playerHealth.currentHealth > 0)
         {
-            audioSource.clip = attackClips[Random.Range(0, attackClips.Length)];
-            audioSource.Play();
             playerHealth.TakeDamage(attackDamage);
+
+            if (playerHealth.currentHealth <= 0) playerInRange = false;
+        }
+        else if (doorInRange)
+        {
+            door.TakeDamage(attackDamage);
         }
     }
 }
